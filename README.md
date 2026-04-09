@@ -169,6 +169,10 @@ What's not wanted: PRs that add ceremony to the prompt itself. The whole point i
 
 If any of these turn out to be larger problems than I think they are, I'd rather find out from a thoughtful issue than from a confident benchmark falling apart later.
 
+## Author
+
+**Peace-png** ([github.com/Peace-png](https://github.com/Peace-png))
+
 ## Star this repo
 
 If Dense Transfer saves you tokens or improves your agent pipelines, consider starring the repo. It helps others find it.
