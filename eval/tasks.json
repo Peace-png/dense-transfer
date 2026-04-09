@@ -1,0 +1,36 @@
+{
+  "tasks": [
+    {
+      "id": "transformer",
+      "domain": "ml",
+      "question": "Explain the self-attention mechanism in transformers, including the math, why each design choice was made, and where it breaks.",
+      "downstream_implementation_task": "Write a working PyTorch implementation of multi-head self-attention from scratch (no nn.MultiheadAttention).",
+      "downstream_debug_task": "A user reports that their attention layer's softmax output is collapsing to one-hot distributions during training. Identify the most likely cause from the context above.",
+      "downstream_justify_task": "Defend the use of sqrt(d_k) scaling against an engineer who proposes removing it to save a sqrt operation per layer."
+    },
+    {
+      "id": "debugging",
+      "domain": "engineering",
+      "question": "My PyTorch model loss is NaN after a few hundred steps. What's wrong and how do I fix it?",
+      "downstream_implementation_task": "Write the diagnostic code that would identify which of the proposed causes is responsible.",
+      "downstream_debug_task": "The user reports gradient norms of 1e8 immediately before NaN appears. Which cause is it and what is the fix?",
+      "downstream_justify_task": "Defend the recommended order of hypothesis checks against an engineer who wants to start with the loss function."
+    },
+    {
+      "id": "architecture",
+      "domain": "engineering",
+      "question": "Should I use Postgres or SQLite for a single-user desktop app that stores ~100k records?",
+      "downstream_implementation_task": "Write the schema migration script and the connection setup code for the recommended database.",
+      "downstream_debug_task": "Six months later the app has grown to 50 concurrent users with simultaneous writes. Should the team migrate? Use only the context above.",
+      "downstream_justify_task": "Defend the recommendation against a senior engineer who insists 'always use Postgres' for consistency across the company stack."
+    },
+    {
+      "id": "research",
+      "domain": "ml",
+      "question": "Summarise the current state of the art on RLHF alternatives for language model alignment.",
+      "downstream_implementation_task": "Write the training loop for DPO from the description in the context.",
+      "downstream_debug_task": "A team reports their DPO model is producing degenerate outputs with extreme log-ratios. Which alternative method addresses this and why?",
+      "downstream_justify_task": "Defend the choice of KTO over DPO for a startup with a small annotation budget."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "_status": "placeholder — no measured runs yet",
+  "_instructions": "Run `python harness.py --model <your-model> --task all` to populate this file with real measurements. The harness will overwrite this placeholder with a results object containing model, judge_model, results, and summary fields. To contribute results to the verified-models table in the README, save your run as `results_<model_name>.json` and open a PR.",
+  "_schema_when_populated": {
+    "model": "string — the model under test",
+    "judge_model": "string — the model used for scoring (defaults to same as model; use a different one to reduce self-judging bias)",
+    "results": [
+      {
+        "task_id": "string from tasks.json",
+        "domain": "string",
+        "modes": {
+          "default": {
+            "token_count": "int",
+            "scores": {
+              "implementation": {"score": "float 0-1", "reasoning": "string"},
+              "debug": {"score": "float 0-1", "reasoning": "string"},
+              "justify": {"score": "float 0-1", "reasoning": "string"}
+            },
+            "average_score": "float 0-1",
+            "tokens_per_score_point": "float",
+            "response": "string — the model's full response, kept for inspection"
+          },
+          "code_only": "same shape",
+          "dense": "same shape"
+        }
+      }
+    ],
+    "summary": {
+      "default": {"avg_tokens": "int", "avg_score": "float 0-1"},
+      "code_only": {"avg_tokens": "int", "avg_score": "float 0-1", "reduction_vs_default": "string %"},
+      "dense": {"avg_tokens": "int", "avg_score": "float 0-1", "reduction_vs_default": "string %"}
+    }
+  }
+}
