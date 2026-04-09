@@ -2,14 +2,14 @@
 
 **Topic:** Explain the self-attention mechanism in transformers.
 
-This example shows what a Dense Transfer response *looks like* for an ML concept. It is not a measured comparison — to get measured numbers for your model, run `eval/harness.py`.
+This example shows what a Dense Transfer response *looks like* for an ML concept. It is not a measured comparison -- to get measured numbers for your model, run `eval/harness.py`.
 
 | Section | Tokens (cl100k_base) | Status |
 |---|---|---|
-| Bloated baseline | varies by model | illustrative excerpt below — not a measured response |
+| Bloated baseline | varies by model | illustrative excerpt below -- not a measured response |
 | Dense version (below) | **487** | measured |
 
-A typical academic treatment of this topic runs 1,500–2,500 words. The dense version below carries the operational content of that treatment in roughly one-fifth the space. Whether your model's *default* output is closer to the academic style or already concise is exactly what the harness measures.
+A typical academic treatment of this topic runs 1,500-2,500 words. The dense version below carries the operational content of that treatment in roughly one-fifth the space. Whether your model's *default* output is closer to the academic style or already concise is exactly what the harness measures.
 
 ---
 
@@ -41,7 +41,7 @@ def attention(Q, K, V):
 
 ### WHY
 
-- **sqrt(d_k) scaling**: without it, dot products grow with dimensionality, softmax saturates, gradients die. Training collapses — not cosmetic.
+- **sqrt(d_k) scaling**: without it, dot products grow with dimensionality, softmax saturates, gradients die. Training collapses -- not cosmetic.
 - **Multi-head**: run attention in parallel across N subspaces, concat, project. Each head learns a different relation type (syntax, coreference, long-range). One head can't do all jobs because softmax forces a single distribution per head.
 - **Positional encoding added to inputs**: attention is order-blind. Without PE, "dog bites man" = "man bites dog".
 - **Residuals + LayerNorm around every sublayer**: gradient highway. Depth past ~6 layers stops training without them.
@@ -55,7 +55,7 @@ def attention(Q, K, V):
 
 ### KEY
 
-Every token simultaneously asks *"who here is relevant to me?"* and borrows meaning weighted by the answer. Parallel, not sequential — that's why it killed RNNs. Multi-head means each token runs that scan through several lenses at once (syntax, semantics, reference) and merges what it finds.
+Every token simultaneously asks *"who here is relevant to me?"* and borrows meaning weighted by the answer. Parallel, not sequential -- that's why it killed RNNs. Multi-head means each token runs that scan through several lenses at once (syntax, semantics, reference) and merges what it finds.
 
 ---
 

@@ -6,15 +6,15 @@
 
 A prompt protocol and eval harness for getting LLMs to deliver maximum signal per token without losing accuracy.
 
-> **Status: v0.1 — early.** The prompt protocol works in daily use for the author. The eval harness is implemented but the verified-models table is empty until contributors run it. Token counts in the examples are real measurements of the *dense* outputs only — the bloated baselines are illustrative excerpts of the kind of prose this protocol is designed to replace, not measured comparisons. Treat this repo as a tool to try and a methodology to verify, not a benchmark to cite.
+> **Status: v0.1 -- early.** The prompt protocol works in daily use for the author. The eval harness is implemented but the verified-models table is empty until contributors run it. Token counts in the examples are real measurements of the *dense* outputs only -- the bloated baselines are illustrative excerpts of the kind of prose this protocol is designed to replace, not measured comparisons. Treat this repo as a tool to try and a methodology to verify, not a benchmark to cite.
 
 ---
 
 ## The problem
 
-Default LLM output is often bloated. Not because models can't be concise — because a lot of training data is academic and corporate prose that spends most of its tokens on throat-clearing. "It is important to note that...", "Notwithstanding these challenges...", multi-paragraph recaps of what you just asked.
+Default LLM output is often bloated. Not because models can't be concise -- because a lot of training data is academic and corporate prose that spends most of its tokens on throat-clearing. "It is important to note that...", "Notwithstanding these challenges...", multi-paragraph recaps of what you just asked.
 
-When you're piloting an LLM orchestra — passing context between agents, building long pipelines, running on a token budget — that ceremony is tax. It costs money, eats context windows, and buries the signal.
+When you're piloting an LLM orchestra -- passing context between agents, building long pipelines, running on a token budget -- that ceremony is tax. It costs money, eats context windows, and buries the signal.
 
 The standard fix is "compress to code + a metaphor." That works for raw token count but tends to throw away the *why* behind decisions, the failure modes, and the cost model. Downstream agents end up with code they can run but can't debug.
 
@@ -22,10 +22,10 @@ The standard fix is "compress to code + a metaphor." That works for raw token co
 
 A four-section output structure that aims to preserve everything operational while deleting everything ceremonial:
 
-1. **CODE / MATH** — the operational truth
-2. **WHY** — non-obvious decisions and what fails without them
-3. **FAILURE MODES** — where it breaks, cost model, escape hatches
-4. **KEY** — one-paragraph intuition that survives forgetting the math
+1. **CODE / MATH** -- the operational truth
+2. **WHY** -- non-obvious decisions and what fails without them
+3. **FAILURE MODES** -- where it breaks, cost model, escape hatches
+4. **KEY** -- one-paragraph intuition that survives forgetting the math
 
 Plus one writing rule that does most of the work:
 
@@ -98,7 +98,7 @@ Works in principle with any instruction-tuned model that accepts a system prompt
 | vLLM (local) | `http://localhost:8000/v1` |
 | llama.cpp server | `http://localhost:8080/v1` |
 
-Compliance quality is expected to scale with model capability. Frontier models are expected to follow the four-section structure cleanly; smaller local models (under ~7B parameters) may drift back into ceremony or skip sections — a few-shot variant of the prompt may help, and adding one is on the v0.2 roadmap. None of this is measured yet.
+Compliance quality is expected to scale with model capability. Frontier models are expected to follow the four-section structure cleanly; smaller local models (under ~7B parameters) may drift back into ceremony or skip sections -- a few-shot variant of the prompt may help, and adding one is on the v0.2 roadmap. None of this is measured yet.
 
 ### Verified models
 
@@ -106,7 +106,7 @@ Compliance quality is expected to scale with model capability. Frontier models a
 
 | Model | Token reduction vs default | Operational accuracy | Judge model | Run by |
 |-------|----------------------------|----------------------|-------------|--------|
-| —     | —                          | —                    | —           | —      |
+| --     | --                          | --                    | --           | --      |
 
 ## Run the harness
 
@@ -126,7 +126,7 @@ python harness.py --model qwen3:4b --base-url http://localhost:11434/v1 --api-ke
 The harness runs each test question through three modes (default, code-only, dense), counts tokens, then asks a judge model to score downstream usability. Results land in `eval/results.json`.
 
 **Caveats up front:**
-- Token counts use `tiktoken` cl100k_base, which is accurate for OpenAI-family models and approximate for others. The *ratios* between modes are reliable; absolute counts for non-OpenAI models will drift 5–15%.
+- Token counts use `tiktoken` cl100k_base, which is accurate for OpenAI-family models and approximate for others. The *ratios* between modes are reliable; absolute counts for non-OpenAI models will drift 5-15%.
 - The judge model has biases. Run with at least two different judges (`--judge-model`) and compare. Self-judging tends to score upward.
 - The rubric measures three axes by default (implementability, debuggability, justifiability). The fourth axis (24-hour human recall) requires humans and is documented in `eval/rubric.md` but not automated.
 

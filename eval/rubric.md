@@ -10,39 +10,39 @@ That's the test. Not "does it sound smart." Not "does it cover everything." **Ca
 
 ## The four scoring axes
 
-Each response is scored 0–1 on four dimensions. The final score is the unweighted average.
+Each response is scored 0-1 on four dimensions. The final score is the unweighted average.
 
-### 1. Implementability (0–1)
+### 1. Implementability (0-1)
 
 Can a competent downstream model produce working code from this context alone?
 
-- **1.0** — All necessary code, types, and parameters present. Downstream model produces a working implementation on first try.
-- **0.5** — Core idea present but missing details (e.g. exact loss formulation, hyperparameter ranges). Downstream model produces working code on second try after one clarification.
-- **0.0** — Insufficient detail. Downstream model either fails or hallucinates the missing pieces.
+- **1.0** -- All necessary code, types, and parameters present. Downstream model produces a working implementation on first try.
+- **0.5** -- Core idea present but missing details (e.g. exact loss formulation, hyperparameter ranges). Downstream model produces working code on second try after one clarification.
+- **0.0** -- Insufficient detail. Downstream model either fails or hallucinates the missing pieces.
 
-### 2. Debuggability (0–1)
+### 2. Debuggability (0-1)
 
 If the downstream implementation fails, does the context contain enough information to diagnose why?
 
-- **1.0** — Failure modes explicitly named with their causes. Downstream model can match observed failure to documented cause.
-- **0.5** — Some failure modes mentioned but not linked to causes. Downstream model can guess but not verify.
-- **0.0** — No failure modes named. Downstream model has to start debugging from scratch.
+- **1.0** -- Failure modes explicitly named with their causes. Downstream model can match observed failure to documented cause.
+- **0.5** -- Some failure modes mentioned but not linked to causes. Downstream model can guess but not verify.
+- **0.0** -- No failure modes named. Downstream model has to start debugging from scratch.
 
-### 3. Justifiability (0–1)
+### 3. Justifiability (0-1)
 
 If asked "why this design choice and not another," can the downstream model answer?
 
-- **1.0** — Non-obvious choices have explicit rationale tied to a failure they prevent. Downstream model can defend the design.
-- **0.5** — Choices listed but rationale missing or hand-wavy. Downstream model can describe but not defend.
-- **0.0** — Choices presented as facts without rationale. Downstream model can only repeat them.
+- **1.0** -- Non-obvious choices have explicit rationale tied to a failure they prevent. Downstream model can defend the design.
+- **0.5** -- Choices listed but rationale missing or hand-wavy. Downstream model can describe but not defend.
+- **0.0** -- Choices presented as facts without rationale. Downstream model can only repeat them.
 
-### 4. Recall (0–1)
+### 4. Recall (0-1)
 
 After 24 hours, what fraction of the operational content does a human reader retain when asked to summarise?
 
-- **1.0** — The KEY (intuition / metaphor) plus all four section labels. Reader can reconstruct the gist.
-- **0.5** — KEY only, section structure forgotten.
-- **0.0** — Nothing operational retained.
+- **1.0** -- The KEY (intuition / metaphor) plus all four section labels. Reader can reconstruct the gist.
+- **0.5** -- KEY only, section structure forgotten.
+- **0.0** -- Nothing operational retained.
 
 This is the only axis that benefits from the metaphor in KEY. It's also the only axis where humans, not models, are the judges.
 
@@ -68,4 +68,4 @@ This is the only axis that benefits from the metaphor in KEY. It's also the only
 
 - The judge model has biases. Run with at least two different judge models and compare.
 - Downstream task quality is the actual ground truth and it's expensive to measure. The judge-model approach is a proxy. Treat it as such.
-- Recall scores require humans and 24 hours. Most automated runs skip this and report a 3-axis average instead. That's fine — note it in `results.json`.
+- Recall scores require humans and 24 hours. Most automated runs skip this and report a 3-axis average instead. That's fine -- note it in `results.json`.

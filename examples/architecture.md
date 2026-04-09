@@ -4,7 +4,7 @@
 
 | Section | Tokens (cl100k_base) | Status |
 |---|---|---|
-| Bloated baseline | varies by model | illustrative excerpt below — not a measured response |
+| Bloated baseline | varies by model | illustrative excerpt below -- not a measured response |
 | Dense version (below) | **480** | measured |
 
 ---
@@ -35,21 +35,21 @@ Use SQLite.
 
 ### FAILURE MODES (and when to revisit)
 
-- **Multiple concurrent writers**: if the app ever grows to multi-user with simultaneous writes (sync server, shared workspace), SQLite's writer lock becomes a bottleneck. Migrate to Postgres at that point, not before. Migration cost is real but bounded — schemas are mostly portable.
+- **Multiple concurrent writers**: if the app ever grows to multi-user with simultaneous writes (sync server, shared workspace), SQLite's writer lock becomes a bottleneck. Migrate to Postgres at that point, not before. Migration cost is real but bounded -- schemas are mostly portable.
 - **Network access from another machine**: SQLite over a network filesystem is broken. If you ever need that, you need a server database. Don't use NFS+SQLite as a workaround.
-- **Heavy concurrent analytics workloads**: parallel reads with joins on millions of rows — Postgres's query planner is better. Not your situation.
+- **Heavy concurrent analytics workloads**: parallel reads with joins on millions of rows -- Postgres's query planner is better. Not your situation.
 - **Full-text search at scale**: SQLite has FTS5 and it's good up to ~1M docs. Past that you want a real search engine (Tantivy, Meilisearch), not Postgres.
 
 ### KEY
 
-Postgres is a server. SQLite is a file. You have one user and 100k records. You don't need a server. The day you need a server, you'll know — and the migration is bounded work, not a one-way door.
+Postgres is a server. SQLite is a file. You have one user and 100k records. You don't need a server. The day you need a server, you'll know -- and the migration is bounded work, not a one-way door.
 
 ---
 
 ## What got cut from the bloated style and why
 
 - **The full Postgres feature list**: irrelevant when the answer is "you don't need a server."
-- **The "both have their strengths" both-sides framing**: hedging that makes the reader do the decision work. The user asked which one to use — answer the question.
+- **The "both have their strengths" both-sides framing**: hedging that makes the reader do the decision work. The user asked which one to use -- answer the question.
 - **Generic "it depends on your use case"**: the use case was given in the question. Apply it. Don't restate it.
 - **Tutorial on ACID, transactions, and SQL**: the user is choosing between two SQL databases.
 

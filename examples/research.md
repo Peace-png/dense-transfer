@@ -4,10 +4,10 @@
 
 | Section | Tokens (cl100k_base) | Status |
 |---|---|---|
-| Bloated baseline | varies by model | illustrative excerpt below — not a measured response |
+| Bloated baseline | varies by model | illustrative excerpt below -- not a measured response |
 | Dense version (below) | **771** | measured |
 
-> **Note on this example**: research synthesis is the closest the four-section format gets to its limits. Citations need to survive compression — they're claims, not ceremony. The dense version below keeps every paper reference; it cuts the throat-clearing around them. The specific paper list and characterisations are the author's working understanding as of early 2026 and should be verified against the original papers before being cited anywhere serious. This is a format demonstration, not an authoritative survey.
+> **Note on this example**: research synthesis is the closest the four-section format gets to its limits. Citations need to survive compression -- they're claims, not ceremony. The dense version below keeps every paper reference; it cuts the throat-clearing around them. The specific paper list and characterisations are the author's working understanding as of early 2026 and should be verified against the original papers before being cited anywhere serious. This is a format demonstration, not an authoritative survey.
 
 ---
 
@@ -26,13 +26,13 @@ A typical version in this register continues by walking through each paper one a
 ```
 RLHF alternatives, working understanding as of early 2026:
 
-1. DPO        (Direct Preference Optimization)        — Rafailov et al. 2023
-2. IPO        (Identity Preference Optimization)      — Azar et al. 2023
-3. KTO        (Kahneman-Tversky Optimization)         — Ethayarajh et al. 2024
-4. ORPO       (Odds Ratio Preference Optimization)    — Hong et al. 2024
-5. SimPO      (Simple Preference Optimization)        — Meng et al. 2024
-6. Constitutional AI / RLAIF                          — Bai et al. 2022 (Anthropic)
-7. SPIN       (Self-Play Fine-Tuning)                 — Chen et al. 2024
+1. DPO        (Direct Preference Optimization)        -- Rafailov et al. 2023
+2. IPO        (Identity Preference Optimization)      -- Azar et al. 2023
+3. KTO        (Kahneman-Tversky Optimization)         -- Ethayarajh et al. 2024
+4. ORPO       (Odds Ratio Preference Optimization)    -- Hong et al. 2024
+5. SimPO      (Simple Preference Optimization)        -- Meng et al. 2024
+6. Constitutional AI / RLAIF                          -- Bai et al. 2022 (Anthropic)
+7. SPIN       (Self-Play Fine-Tuning)                 -- Chen et al. 2024
 ```
 
 ### WHY (what each one is doing differently)
@@ -55,7 +55,7 @@ RLHF alternatives, working understanding as of early 2026:
 
 ### KEY
 
-The trajectory has been to remove components from the original RLHF pipeline one at a time. DPO removed the reward model. KTO removed the pairwise requirement. SPIN removed the preference data. RLAIF removed the human. What remains is the question of whose values the model is being aligned to — and no method has touched that.
+The trajectory has been to remove components from the original RLHF pipeline one at a time. DPO removed the reward model. KTO removed the pairwise requirement. SPIN removed the preference data. RLAIF removed the human. What remains is the question of whose values the model is being aligned to -- and no method has touched that.
 
 ---
 

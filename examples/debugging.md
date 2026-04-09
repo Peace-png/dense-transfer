@@ -4,10 +4,10 @@
 
 | Section | Tokens (cl100k_base) | Status |
 |---|---|---|
-| Bloated baseline | varies by model | illustrative excerpt below — not a measured response |
+| Bloated baseline | varies by model | illustrative excerpt below -- not a measured response |
 | Dense version (below) | **612** | measured |
 
-Debugging breaks the four-section format. The structure is **hypothesis → test → fix**. The reasoning chain matters more than the abstract "why" — the user needs to follow your logic to apply it to their own situation.
+Debugging breaks the four-section format. The structure is **hypothesis → test → fix**. The reasoning chain matters more than the abstract "why" -- the user needs to follow your logic to apply it to their own situation.
 
 ---
 
@@ -53,7 +53,7 @@ assert (probs > 0).all()  # before any log()
 - **#1 (gradient spike):** Add `torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)` before `optimizer.step()`. Drop learning rate by 10x. If using Adam, increase `eps` to `1e-7`.
 - **#2 (loss instability):** Use `nn.CrossEntropyLoss` on raw logits, never softmax → log manually. For custom losses, add `torch.clamp(x, min=1e-7)` before any `log`.
 - **#3 (bad data):** Add the assertion to your dataloader's `__getitem__`. Find the offending row and decide: drop, impute, or fix upstream.
-- **#4 (fp16 overflow):** Use `torch.cuda.amp.GradScaler` if you aren't already. If you are, the scaler is already handling it — your problem is one of the other three.
+- **#4 (fp16 overflow):** Use `torch.cuda.amp.GradScaler` if you aren't already. If you are, the scaler is already handling it -- your problem is one of the other three.
 
 ### Why this order
 
@@ -68,4 +68,4 @@ Likelihood × ease of check. Gradient norm logging is one line and catches the m
 - **Tutorial on what NaN is**: the user has a NaN, they know what NaN is.
 - **"Hope this helps!" / "Let me know if you have more questions"**: ceremony.
 
-What was kept: the reasoning chain. The user needs to know *why* gradient spike is hypothesis #1, not #4 — otherwise they can't adapt the logic when their situation differs.
+What was kept: the reasoning chain. The user needs to know *why* gradient spike is hypothesis #1, not #4 -- otherwise they can't adapt the logic when their situation differs.
